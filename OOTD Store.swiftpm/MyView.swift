@@ -1,5 +1,6 @@
 import SwiftUI
 
+// 顯示登入系統畫面及使用者帳戶畫面
 struct MyView: View {
     @State private var login = false
     @State private var showLoginView = false
@@ -12,6 +13,7 @@ struct MyView: View {
             ZStack {
                 Color(.white)
                 if !login {
+                    // 使用者登入前的介面
                     VStack (spacing: 40) {
                         Text("請先登入")
                             .font(.title)
@@ -24,6 +26,7 @@ struct MyView: View {
                     }
                     .background(Color(.white))
                 } else {
+                    // 使用者登入後的介面
                     VStack (alignment: .leading, spacing: 40) {
                         Text("我的帳號")
                             .foregroundColor(Color(.black))
@@ -40,6 +43,7 @@ struct MyView: View {
                                 .listRowBackground(Color(.white))
                             }
                             .listRowBackground(Color(.white))
+                            // 導向使用者購物車介面
                             NavigationLink {
                                 cartView()
                             } label: {
@@ -47,6 +51,7 @@ struct MyView: View {
                                     .foregroundColor(.black)
                             }
                             .listRowBackground(Color(.white))
+                            // 登出當前帳戶按鈕
                             Button {
                                 showAlert = true
                                 login = false
@@ -71,6 +76,7 @@ struct MyView: View {
     }
 }
 
+// 登入系統介面登入按鈕
 struct ButtonView: View {
     @Binding public var login: Bool
     @State private var buttonPressed = false
@@ -103,6 +109,7 @@ extension account {
     static let demoAccount = account(username: "unknown", password: "null", accumulation: 0)
 }
 
+// 登入系統介面
 struct loginView: View {
     public let status: String
     @Binding public var login: Bool
@@ -154,7 +161,9 @@ struct loginView: View {
             }
         }
     }
+    // 檢查帳號密碼是否合法以及登入是否成功
     private func checkCredentials() {
+        // 檢查帳號或密碼欄位是否為空白
         guard !user.isEmpty && !pwd.isEmpty else {
             alertMsg = "帳號或密碼不能為空白"
             return
@@ -183,6 +192,7 @@ struct loginView: View {
     }
 }
 
+// 顯示使用者購物車介面
 struct cartView: View {
     @State private var showAlert: Bool = false
     @State private var AlertMsg: String = "購物車中沒有商品"
@@ -193,6 +203,7 @@ struct cartView: View {
             Color(.white)
             VStack (alignment: .trailing) {
                 display()
+                // 按下下單按鈕後檢查購物車是否為空
                 Button {
                     if cartView.total == 0 {
                         AlertMsg = "購物車中沒有商品"
@@ -218,7 +229,8 @@ struct cartView: View {
         }
         .background(Color(.white))
     }
-    func display() -> some View {
+    // 顯示購物車清單
+    private func display() -> some View {
         ZStack {
             Color(.white)
             List {
