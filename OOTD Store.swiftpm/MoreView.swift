@@ -1,5 +1,6 @@
 import SwiftUI
 
+// 顯示參考資料來源之頁面
 struct MoreView: View {
     var body: some View {
         ZStack {
@@ -27,6 +28,7 @@ struct MoreView: View {
     }
 }
 
+// 針對每一項參考來源優化使用者介面
 struct linkView: View {
     public let url: String
     public let name: String
