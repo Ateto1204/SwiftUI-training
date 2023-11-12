@@ -1,5 +1,6 @@
 import SwiftUI
 
+// 顯示所有商品之頁面
 struct GoodsView: View {
     let tops = [
         Good(title: "寬鬆復古亨利領針織衫", imageCode: "p1", oldPrice: 1380, newPrice: 900, imageLength: 9), 
@@ -41,6 +42,7 @@ struct GoodsView: View {
                         .padding(EdgeInsets(top: 25, leading: 25, bottom: 0, trailing: 200))
                     ScrollView {
                         VStack (spacing: 60) {
+                            // 最上排顯示可左右滾動的廣告圖
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ForEach(ads.indices) { item in
@@ -54,6 +56,7 @@ struct GoodsView: View {
                                     }
                                 }
                             }
+                            // 顯示各類商品
                             goodsRow(title: "TOPS", goods: tops)
                             goodsRow(title: "BOTTOMS", goods: bottoms)
                             goodsRow(title: "OUTERS", goods: outers)
@@ -70,6 +73,7 @@ struct GoodsView: View {
     }
 }
 
+// 商品
 struct Good {
     let title: String
     let imageCode: String
@@ -95,6 +99,7 @@ struct Good {
     }
 }
 
+// 顯示特定單一商品頁面
 struct goodContent: View {
     @State private var page: Int = 1
     @State private var showAlert: Bool = false
@@ -109,7 +114,9 @@ struct goodContent: View {
                 ZStack {
                     Color(.white)
                     VStack {
+                        // 商品預覽圖可透過點擊左右箭頭按鈕切換該商品預覽圖
                         HStack (spacing: 3) {
+                            // 左箭頭按鈕
                             Button {
                                 page -= 1
                                 if page == 0 {
@@ -122,6 +129,7 @@ struct goodContent: View {
                                     .frame(width: 25, height: 25)
                                     .foregroundColor(.gray)
                             }
+                            // 右箭頭按鈕
                             Button {
                                 page += 1
                                 if page > good.imageLength {
@@ -160,9 +168,9 @@ struct goodContent: View {
                             Text("M").tag(1)
                             Text("L").tag(2)
                         } label: {
-                            Text("選擇尺寸123")
+                            Text("選擇尺寸")
                         }
-                        
+                        // 若有尚未選擇商品尺寸則不能加入購物車
                         Button {
                             good.size = selections[selectedSize]
                             if good.size == "選擇尺寸" {
@@ -195,6 +203,7 @@ struct goodContent: View {
     }
 }
 
+// 以左右滾動顯示同類別商品
 struct goodsRow: View {
     let title: String
     let goods: [Good]
