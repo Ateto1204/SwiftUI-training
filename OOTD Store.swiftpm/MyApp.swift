@@ -7,6 +7,7 @@ struct MyApp: App {
         WindowGroup {
             ZStack {
                 ContentView()
+                // 顯示APP啟動畫面
                 launchView()
                     .ignoresSafeArea()
                     .opacity(opacity)
@@ -19,6 +20,7 @@ struct MyApp: App {
     }
 }
 
+// APP啟動畫面
 struct launchView: View {
     @State private var opacity: Double = 0
     var body: some View {
