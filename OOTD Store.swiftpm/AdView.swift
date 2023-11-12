@@ -1,5 +1,6 @@
 import SwiftUI
 
+// 顯示最新消息頁面
 struct AdView: View {
     let images = [
         Image("AD1"), 
@@ -23,6 +24,7 @@ struct AdView: View {
                     List {
                         ForEach(images.indices) { item in
                             NavigationLink {
+                                // 最新消息的每張廣告圖可點開
                                 showAd(image: images[item])
                             } label: {
                                 images[item]
