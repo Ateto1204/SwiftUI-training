@@ -1,1 +1,1 @@
-# OOTD-Store-iOS
+OOTD Store of iOS APP
