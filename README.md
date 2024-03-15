@@ -17,4 +17,3 @@ However, this has nothing to do with the plot of the movie.
 - [Pengi | 日本代購](https://www.instagram.com/pengi.japan/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==)
 - [Freak's Store](https://www.daytona-park.com/)
 - [Nerd-Select](https://www.instagram.com/nerd_select/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==)
->>>>>>> demo2/main
